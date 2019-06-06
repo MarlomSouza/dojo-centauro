@@ -1,0 +1,9 @@
+c:\Users\222406\Dojo\ToDo\ToDo.Dominio\bin\Debug\netstandard2.0\ToDo.Dominio.deps.json
+c:\Users\222406\Dojo\ToDo\ToDo.Dominio\bin\Debug\netstandard2.0\ToDo.Dominio.dll
+c:\Users\222406\Dojo\ToDo\ToDo.Dominio\bin\Debug\netstandard2.0\ToDo.Dominio.pdb
+c:\Users\222406\Dojo\ToDo\ToDo.Dominio\obj\Debug\netstandard2.0\ToDo.Dominio.csprojAssemblyReference.cache
+c:\Users\222406\Dojo\ToDo\ToDo.Dominio\obj\Debug\netstandard2.0\ToDo.Dominio.csproj.CoreCompileInputs.cache
+c:\Users\222406\Dojo\ToDo\ToDo.Dominio\obj\Debug\netstandard2.0\ToDo.Dominio.AssemblyInfoInputs.cache
+c:\Users\222406\Dojo\ToDo\ToDo.Dominio\obj\Debug\netstandard2.0\ToDo.Dominio.AssemblyInfo.cs
+c:\Users\222406\Dojo\ToDo\ToDo.Dominio\obj\Debug\netstandard2.0\ToDo.Dominio.dll
+c:\Users\222406\Dojo\ToDo\ToDo.Dominio\obj\Debug\netstandard2.0\ToDo.Dominio.pdb
