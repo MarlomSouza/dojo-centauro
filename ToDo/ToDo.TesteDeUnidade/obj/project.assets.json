@@ -1673,6 +1673,16 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
         }
+      },
+      "ToDo.Dominio/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/ToDo.Dominio.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ToDo.Dominio.dll": {}
+        }
       }
     }
   },
@@ -5881,14 +5891,20 @@
         "system.xml.xpath.xmldocument.4.3.0.nupkg.sha512",
         "system.xml.xpath.xmldocument.nuspec"
       ]
+    },
+    "ToDo.Dominio/1.0.0": {
+      "type": "project",
+      "path": "../ToDo.Dominio/ToDo.Dominio.csproj",
+      "msbuildProject": "../ToDo.Dominio/ToDo.Dominio.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
       "Microsoft.NET.Test.Sdk >= 15.9.0",
       "Microsoft.NETCore.App >= 2.2.0",
-      "Moq",
+      "Moq >= 4.11.0",
       "NUnit3TestAdapter >= 3.11.0",
+      "ToDo.Dominio >= 1.0.0",
       "nunit >= 3.11.0"
     ]
   },
@@ -5922,7 +5938,11 @@
       },
       "frameworks": {
         "netcoreapp2.2": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\222406\\Dojo\\ToDo\\ToDo.Dominio\\ToDo.Dominio.csproj": {
+              "projectPath": "C:\\Users\\222406\\Dojo\\ToDo\\ToDo.Dominio\\ToDo.Dominio.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -5946,7 +5966,7 @@
           },
           "Moq": {
             "target": "Package",
-            "version": "(, )"
+            "version": "[4.11.0, )"
           },
           "NUnit3TestAdapter": {
             "target": "Package",

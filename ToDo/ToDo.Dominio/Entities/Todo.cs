@@ -23,6 +23,10 @@ namespace ToDo.Dominio.Entities
             if (string.IsNullOrWhiteSpace(tipo) || !_tipoValidos.Contains(tipo))
                 throw new ArgumentException("Tipo invalido");
 
+            var dataCriacao = Data.Atual;
+            if(dataCriacao.UtcNow.DayOfWeek == DayOfWeek.Friday && dataCriacao.UtcNow.Hour >= 13)
+                throw new ArgumentException("Todo sexta inválido");
+            
             Titulo = titulo;
             Descricao = descricao;
             Tipo = tipo;

@@ -1,0 +1,11 @@
+C:\Users\222406\Dojo\ContarQuantidadeURL\bin\Debug\netcoreapp2.2\ContarQuantidadeURL.deps.json
+C:\Users\222406\Dojo\ContarQuantidadeURL\bin\Debug\netcoreapp2.2\ContarQuantidadeURL.runtimeconfig.json
+C:\Users\222406\Dojo\ContarQuantidadeURL\bin\Debug\netcoreapp2.2\ContarQuantidadeURL.runtimeconfig.dev.json
+C:\Users\222406\Dojo\ContarQuantidadeURL\bin\Debug\netcoreapp2.2\ContarQuantidadeURL.dll
+C:\Users\222406\Dojo\ContarQuantidadeURL\bin\Debug\netcoreapp2.2\ContarQuantidadeURL.pdb
+C:\Users\222406\Dojo\ContarQuantidadeURL\obj\Debug\netcoreapp2.2\ContarQuantidadeURL.csprojAssemblyReference.cache
+C:\Users\222406\Dojo\ContarQuantidadeURL\obj\Debug\netcoreapp2.2\ContarQuantidadeURL.csproj.CoreCompileInputs.cache
+C:\Users\222406\Dojo\ContarQuantidadeURL\obj\Debug\netcoreapp2.2\ContarQuantidadeURL.AssemblyInfoInputs.cache
+C:\Users\222406\Dojo\ContarQuantidadeURL\obj\Debug\netcoreapp2.2\ContarQuantidadeURL.AssemblyInfo.cs
+C:\Users\222406\Dojo\ContarQuantidadeURL\obj\Debug\netcoreapp2.2\ContarQuantidadeURL.dll
+C:\Users\222406\Dojo\ContarQuantidadeURL\obj\Debug\netcoreapp2.2\ContarQuantidadeURL.pdb

@@ -1,16 +1,17 @@
 using System;
 using Moq;
 using NUnit.Framework;
+using ToDo.Dominio;
 using ToDo.Dominio.Entities;
 
 namespace ToDo.TesteDeUnidade
 {
     public class TodoTeste
     {
-        private const string _tipoValido = "Desenvolvimento"; 
-        private const string _descricaoValida = "Descricao valida"; 
-
+        private const string _tipoValido = "Desenvolvimento";
+        private const string _descricaoValida = "Descricao valida";
         private const string _tituloValido = "Titulo";
+
 
         [Test]
         public void Deve_criar_um_todo_com_titulo()
@@ -45,7 +46,7 @@ namespace ToDo.TesteDeUnidade
             //Arrange
             var descricaoEsperada = "Comprar whey";
             //Act
-            var todo = new Todo("Compras", "Comprar whey", _tipoValido);
+            var todo = new Todo("Compras", "Comprar whey", "Manutenção urgente");
             //Assert
             Assert.AreEqual(descricaoEsperada, todo.Descricao);
         }
@@ -60,7 +61,7 @@ namespace ToDo.TesteDeUnidade
             const string mensagemEsperada = "Descricao obrigatoria";
             //Act
             TestDelegate act = () => { var todo = new Todo(titulo, descricaoNaoPreenchida, _tipoValido); };
-            
+
             //Assert
             var message = Assert.Throws<ArgumentNullException>(act).Message;
             Assert.IsTrue(message.Contains(mensagemEsperada));
@@ -91,8 +92,8 @@ namespace ToDo.TesteDeUnidade
             var mensagemEsperada = "Tipo invalido";
 
             //Act
-            TestDelegate act = () => { var todo = new Todo(_tituloValido, _descricaoValida, tipo);};
-            
+            TestDelegate act = () => { var todo = new Todo(_tituloValido, _descricaoValida, tipo); };
+
             //Assert
             var mensagem = Assert.Throws<ArgumentException>(act).Message;
             Assert.IsTrue(mensagem.Contains(mensagemEsperada));
@@ -101,13 +102,25 @@ namespace ToDo.TesteDeUnidade
         [Test]
         public void Deve_Lancar_Excecao_Quando_Tipo_Manutencao_Urgente_For_Criado_Apos_Treze_Horas_As_Sextas_Feiras()
         {
-            //Arrange
-            
+            // //Arrange
+            // var dataEsperada = new DateTime(2019, 06, 07, 13, 0, 0);
+            const string tipo = "Manutenção urgente";
+            const string mensagemEsperada = "Todo sexta inválido";
+            // var data = new Mock<Data>();
+            // data.Setup(d => d.UtcNow).Returns(dataEsperada);
+            // Data.Atual = data.Object;
+            Data.ResetarDataParaAtual();
+
             //Act
-            
+            TestDelegate act = () => new Todo(_tituloValido, _descricaoValida, tipo);
             //Assert
-            Assert.IsTrue(mensagemEsperada )
+            var mensagem = Assert.Throws<ArgumentException>(act).Message;
+            Assert.AreEqual(mensagemEsperada, mensagem);
         }
 
+
+        [TearDown]
+        public void TearDown() => Data.ResetarDataParaAtual();
     }
+
 }
