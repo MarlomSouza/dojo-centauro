@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Moq;
 using NUnit.Framework;
 using ToDo.Dominio;
@@ -99,17 +100,21 @@ namespace ToDo.TesteDeUnidade
             Assert.IsTrue(mensagem.Contains(mensagemEsperada));
         }
 
-        [Test]
-        public void Deve_Lancar_Excecao_Quando_Tipo_Manutencao_Urgente_For_Criado_Apos_Treze_Horas_As_Sextas_Feiras()
+        private static IEnumerable<object> DataSextaFeira()
         {
-            // //Arrange
-            // var dataEsperada = new DateTime(2019, 06, 07, 13, 0, 0);
+            yield return new object[] { new DateTime(2019, 6, 7, 13, 0, 0) };
+            yield return new object[] { new DateTime(2019, 6, 7, 23, 0, 0) };
+        }
+
+        [TestCaseSource("DataSextaFeira")]
+        public void Deve_Lancar_Excecao_Quando_Tipo_Manutencao_Urgente_For_Criado_Apos_Treze_Horas_As_Sextas_Feiras(DateTime dataEsperada)
+        {
+            //Arrange
             const string tipo = "Manutenção urgente";
             const string mensagemEsperada = "Todo sexta inválido";
-            // var data = new Mock<Data>();
-            // data.Setup(d => d.UtcNow).Returns(dataEsperada);
-            // Data.Atual = data.Object;
-            Data.ResetarDataParaAtual();
+            var data = new Mock<Data>();
+            data.Setup(d => d.UtcNow).Returns(dataEsperada);
+            Data.Atual = data.Object;
 
             //Act
             TestDelegate act = () => new Todo(_tituloValido, _descricaoValida, tipo);

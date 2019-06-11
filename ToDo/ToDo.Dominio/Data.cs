@@ -13,7 +13,7 @@ namespace ToDo.Dominio
             set
             {
                 if (value == null)
-                    throw new ArgumentNullException("Hora nula");
+                    throw new ArgumentNullException("Hora inválida");
                 Data._atual = value;
             }
         }
