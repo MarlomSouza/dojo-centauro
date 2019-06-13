@@ -7,7 +7,7 @@ namespace ToDo.TesteDeUnidade
 {
     public class TodoTeste
     {
-        private const string _tipoValido = "Manutenção urgente";
+        private const string _tipoValido = "Desenvolvimento";
         private const string _descricaoValida = "Descricao valida";
 
         private const string _tituloValido = "Titulo";
@@ -104,11 +104,12 @@ namespace ToDo.TesteDeUnidade
         public void Deve_Lancar_Excecao_Quando_Tipo_Manutencao_Urgente_For_Criado_Apos_Treze_Horas_As_Sextas_Feiras()
         {
             //Arrange
+            var tipo = "Manutenção urgente";
             var mensagemEsperada = "Não é possível criar manutenções urgentes após as 13h nas sextas";
             var dataSextaDepoisDasTreze = new DateTime(2019, 6, 7, 13, 10, 0);
 
             //Act
-            TestDelegate code = () => new Todo(_tituloValido, _descricaoValida, _tipoValido, dataSextaDepoisDasTreze);
+            TestDelegate code = () => new Todo(_tituloValido, _descricaoValida, tipo, dataSextaDepoisDasTreze);
             //Assert
             var mensagemExcecao = Assert.Throws<ArgumentException>(code).Message;
 
@@ -116,28 +117,57 @@ namespace ToDo.TesteDeUnidade
         }
 
         [Test]
-        public void Deve_Criar_Um_Todo_Com_Estado_Aberto()
+        public void Deve_Criar_Um_Todo_Nao_Concluido()
         {
-            //Arrange
-            var estadoEsperado = EstadoToDo.Aberto;
-
             //Act
             var todo = new Todo(_tituloValido, _descricaoValida, _tipoValido, _dataCriacaoValida);
-            
+
             //Assert
-            Assert.AreEqual(estadoEsperado, todo.Estado);
+            Assert.IsFalse(todo.Concluido);
         }
 
         [Test]
-        public void TestName()
+        public void Deve_Marcar_Todo_Para_Concluido()
         {
             //Arrange
-            
+            var todo = new Todo(_tituloValido, _descricaoValida, _tipoValido, _dataCriacaoValida);
+
             //Act
-            
+            todo.MarcarTodoComoConcluido();
+
             //Assert
-            
+            Assert.IsTrue(todo.Concluido);
         }
+
+        [Test]
+        public void Deve_Desmarcar_Todo_Para_Nao_Concluido()
+        {
+            //Arrange
+            var todo = new Todo(_tituloValido, _descricaoValida, _tipoValido, _dataCriacaoValida);
+            todo.MarcarTodoComoConcluido();
+
+            //Act
+            todo.MarcarTodoComoNaoConcluido();
+
+            //Assert
+            Assert.IsFalse(todo.Concluido);
+        }
+
+        [TestCase("Atendimento")]
+        [TestCase("Manutenção urgente")]
+        public void Nao_Deve_Concluir_Todo_De_Atendimento_E_Manutencao_Urgente_Se_Descricao_Com_Menos_50_Caracteres(string tipo)
+        {
+            //Arrange
+            var descricao = "Descricao valida com menos de 50 caracteres.";
+            var todo = new Todo(_tituloValido, descricao, tipo, _dataCriacaoValida);
+
+            //Act
+            TestDelegate code = () => { todo.MarcarTodoComoConcluido(); };
+
+            //Assert
+            Assert.Throws<Exception>(code);
+        }
+
 
     }
 }

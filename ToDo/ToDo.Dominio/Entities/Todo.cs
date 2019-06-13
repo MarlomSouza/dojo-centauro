@@ -8,10 +8,10 @@ namespace ToDo.Dominio.Entities
         public string Titulo { get; private set; }
         public string Descricao { get; set; }
         public string Tipo { get; set; }
-
-        public EstadoToDo Estado { get; }
-
+        public bool Concluido { get; private set;}
         private string[] _tipoValidos = { "Desenvolvimento", "Atendimento", "Manutenção", "Manutenção urgente" };
+
+        private const int _limiteCaracter = 50;
 
         public Todo(string titulo, string descricao, string tipo, DateTime dataCriacao)
         {
@@ -39,10 +39,18 @@ namespace ToDo.Dominio.Entities
                 throw new ArgumentException("Não é possível criar manutenções urgentes após as 13h nas sextas");
             }
         }
-    }
 
-    public enum EstadoToDo
-    {
-        Aberto
+        public void MarcarTodoComoConcluido(){
+            
+            if((Tipo == "Atendimento" || Tipo == "Manutenção urgente") && Descricao.Trim().Length < _limiteCaracter){
+                throw new Exception();
+            }
+            Concluido = true;
+        }
+
+        public void MarcarTodoComoNaoConcluido()
+        {
+            Concluido = false;
+        }
     }
 }
