@@ -1,5 +1,7 @@
 ## ToDo - DOJO
 
+![](https://i.imgur.com/OvMZBs9.jpg)
+
 - Possibilidade de criar um ToDo contendo um título, descrição e tipo;
 - Listar os ToDo em aberto;
 - Marcar e desmarcar os ToDo como concluídos;
