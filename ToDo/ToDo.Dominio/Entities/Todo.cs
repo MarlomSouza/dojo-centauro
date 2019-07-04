@@ -13,6 +13,8 @@ namespace ToDo.Dominio.Entities
 
         private const int _limiteCaracter = 50;
 
+        public bool Aberto { get; private set; }
+
         public Todo(string titulo, string descricao, string tipo, DateTime dataCriacao)
         {
             ValidarConstrucao(titulo, descricao, tipo, dataCriacao);
@@ -20,6 +22,7 @@ namespace ToDo.Dominio.Entities
             Titulo = titulo;
             Descricao = descricao;
             Tipo = tipo;
+            Aberto = true;
         }
 
         private void ValidarConstrucao(string titulo, string descricao, string tipo, DateTime dataCriacao)
@@ -46,11 +49,13 @@ namespace ToDo.Dominio.Entities
                 throw new Exception();
             }
             Concluido = true;
+            Aberto = false;
         }
 
         public void MarcarTodoComoNaoConcluido()
         {
             Concluido = false;
+            Aberto = true;
         }
     }
 }

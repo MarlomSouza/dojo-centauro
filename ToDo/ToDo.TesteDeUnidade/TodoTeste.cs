@@ -140,7 +140,7 @@ namespace ToDo.TesteDeUnidade
         }
 
         [Test]
-        public void Deve_Desmarcar_Todo_Para_Nao_Concluido()
+        public void Deve_Desmarcar_Todo_Para_Nao_Concluido_E_Todo_Para_Aberto()
         {
             //Arrange
             var todo = new Todo(_tituloValido, _descricaoValida, _tipoValido, _dataCriacaoValida);
@@ -151,6 +151,7 @@ namespace ToDo.TesteDeUnidade
 
             //Assert
             Assert.IsFalse(todo.Concluido);
+            Assert.IsTrue(todo.Aberto);
         }
 
         [TestCase("Atendimento")]
@@ -166,6 +167,33 @@ namespace ToDo.TesteDeUnidade
 
             //Assert
             Assert.Throws<Exception>(code);
+        }
+
+        [Test]
+        public void Deve_criar_um_todo_em_aberto()
+        {
+            //Arrange
+            
+            //Act
+            var todo = new Todo(_tituloValido, _descricaoValida, _tipoValido, _dataCriacaoValida);
+            
+            //Assert
+            Assert.IsTrue(todo.Aberto);
+            Assert.IsFalse(todo.Concluido);
+        }
+
+        [Test]
+        public void Deve_marcar_todo_aberto_como_false_quando_concluido_for_igual_a_true()
+        {
+            //Arrange
+            var todo = new Todo(_tituloValido, _descricaoValida, _tipoValido, _dataCriacaoValida);
+
+            //Act
+            todo.MarcarTodoComoConcluido();
+
+            //Assert
+            Assert.IsTrue(todo.Concluido);
+            Assert.IsFalse(todo.Aberto);
         }
 
 
